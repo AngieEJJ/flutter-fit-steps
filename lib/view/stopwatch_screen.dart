@@ -66,7 +66,7 @@ class _StopWatchScreenState extends State<StopwatchScreen> {
           icon: const Icon(Icons.arrow_back_outlined),
         ),
         backgroundColor: Colors.green[100],
-        title: const Text('Track Walking Time',
+        title: const Text('Track Time',
             style: TextStyle(fontWeight: FontWeight.bold)),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.notifications)),
