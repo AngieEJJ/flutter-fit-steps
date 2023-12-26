@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:untitled/widget/profile_widget.dart';
-
-import 'stopwatch_screen.dart';
 
 class JsScreen extends StatelessWidget {
   const JsScreen({super.key});
@@ -11,6 +10,12 @@ class JsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.green[50],
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            context.go('/');
+          },
+          icon: const Icon(Icons.arrow_back_outlined),
+        ),
         backgroundColor: Colors.green[100],
         title: const Text('JS PARK',
             style: TextStyle(fontWeight: FontWeight.bold)),
@@ -31,14 +36,11 @@ class JsScreen extends StatelessWidget {
           const SizedBox(height: 30),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: ((context) => const StopwatchScreen())));
+              context.go('/stopwatch');
             },
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.green),
-              minimumSize: MaterialStateProperty.all(Size(150, 50)),
+              minimumSize: MaterialStateProperty.all(const Size(150, 50)),
             ),
             child: const Text(
               '산책 시작하기',

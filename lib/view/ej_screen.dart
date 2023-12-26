@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/view/stopwatch_screen.dart';
+import 'package:go_router/go_router.dart';
 import 'package:untitled/widget/profile_widget.dart';
 
 class EjScreen extends StatelessWidget {
@@ -10,6 +10,12 @@ class EjScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.green[50],
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            context.go('/');
+          },
+          icon: const Icon(Icons.arrow_back_outlined),
+        ),
         backgroundColor: Colors.green[100],
         title: const Text('EJJ', style: TextStyle(fontWeight: FontWeight.bold)),
         actions: [
@@ -29,10 +35,7 @@ class EjScreen extends StatelessWidget {
           const SizedBox(height: 30),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: ((context) => const StopwatchScreen())));
+              context.go('/stopwatch');
             },
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.green),

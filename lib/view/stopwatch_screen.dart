@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class StopwatchScreen extends StatefulWidget {
   const StopwatchScreen({super.key});
@@ -10,13 +11,10 @@ class StopwatchScreen extends StatefulWidget {
 
 class _StopWatchScreenState extends State<StopwatchScreen> {
   Timer? _timer;
-  //아무것도 없을 때 null 이기 때문에 물음표를 붙인다.
   bool _isRunning = false;
   int _time = 0;
-  List<String> _laptimes = [];
+  final List<String> _laptimes = [];
 
-  // <필요한 기능>: 타이머 기능, 시작, 플레이, 중지, 취소 (cancle이라는 기본 메서드 있음)
-  // 1) 플레이: 플레이 버튼 실행시 타이머가 돌아가고, 다시 클릭시 꺼져야 한다.
   void _clickButton() {
     _isRunning = !_isRunning;
 
@@ -27,7 +25,6 @@ class _StopWatchScreenState extends State<StopwatchScreen> {
     }
   }
 
-  //2) 시작, 중지 (타이머 기능 생성)
   void _start() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
@@ -47,7 +44,6 @@ class _StopWatchScreenState extends State<StopwatchScreen> {
     _time = 0;
   }
 
-  //3) 화면이 종료될 떄 타이머 파괴 필요 -> 타이머가 살아있다면 캔슬한다.
   @override
   void dispose() {
     _timer?.cancel();
@@ -63,6 +59,12 @@ class _StopWatchScreenState extends State<StopwatchScreen> {
     return Scaffold(
       backgroundColor: Colors.green[50],
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            context.go('/');
+          },
+          icon: const Icon(Icons.arrow_back_outlined),
+        ),
         backgroundColor: Colors.green[100],
         title: const Text('Track Walking Time',
             style: TextStyle(fontWeight: FontWeight.bold)),
@@ -81,17 +83,17 @@ class _StopWatchScreenState extends State<StopwatchScreen> {
               children: [
                 Text(
                   '$min',
-                  style: const TextStyle(fontSize: 90),
+                  style: const TextStyle(fontSize: 80),
                 ),
-                const Text('min', style: TextStyle(fontSize: 50)),
+                const Text('min', style: TextStyle(fontSize: 40)),
                 const SizedBox(width: 20),
-                Text('$sec', style: const TextStyle(fontSize: 75)),
-                const Text('sec', style: TextStyle(fontSize: 50)),
+                Text('$sec', style: const TextStyle(fontSize: 70)),
+                const Text('sec', style: TextStyle(fontSize: 40)),
               ],
             ),
             SizedBox(
               width: 100,
-              height: 200,
+              height: 100,
               child: ListView(
                 children: _laptimes.map((e) => Text(e)).toList(),
               ),
@@ -124,7 +126,7 @@ class _StopWatchScreenState extends State<StopwatchScreen> {
                       showDialog(
                         context: context,
                         builder: ((context) => AlertDialog(
-                              title: Center(
+                              title: const Center(
                                 child: Text(
                                   'Well Done!',
                                 ),
@@ -134,7 +136,7 @@ class _StopWatchScreenState extends State<StopwatchScreen> {
                                     onPressed: () {
                                       Navigator.pop(context);
                                     },
-                                    child: Text(
+                                    child: const Text(
                                       'ok',
                                       style: TextStyle(fontSize: 17),
                                     ))
