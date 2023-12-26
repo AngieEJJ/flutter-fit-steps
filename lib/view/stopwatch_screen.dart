@@ -86,7 +86,7 @@ class _StopWatchScreenState extends State<StopwatchScreen> {
                 const Text('min', style: TextStyle(fontSize: 50)),
                 const SizedBox(width: 20),
                 Text('$sec', style: const TextStyle(fontSize: 75)),
-                const Text('', style: TextStyle(fontSize: 50)),
+                const Text('sec', style: TextStyle(fontSize: 50)),
               ],
             ),
             SizedBox(
@@ -105,7 +105,7 @@ class _StopWatchScreenState extends State<StopwatchScreen> {
                       _reset();
                     });
                   },
-                  backgroundColor: Colors.amber[200],
+                  backgroundColor: Colors.grey[300],
                   child: const Icon(Icons.refresh),
                 ),
                 FloatingActionButton(
@@ -114,7 +114,7 @@ class _StopWatchScreenState extends State<StopwatchScreen> {
                       _clickButton();
                     });
                   },
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Colors.grey[100],
                   child: _isRunning
                       ? const Icon(Icons.pause)
                       : const Icon(Icons.play_arrow),
@@ -134,12 +134,15 @@ class _StopWatchScreenState extends State<StopwatchScreen> {
                                     onPressed: () {
                                       Navigator.pop(context);
                                     },
-                                    child: Text('ok'))
+                                    child: Text(
+                                      'ok',
+                                      style: TextStyle(fontSize: 17),
+                                    ))
                               ],
                             )),
                       );
                     },
-                    backgroundColor: Colors.green[300],
+                    backgroundColor: Colors.grey[300],
                     child: const Icon(Icons.done)),
               ],
             ),

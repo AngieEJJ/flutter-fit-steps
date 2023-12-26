@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/view/js_screen.dart';
-
 import 'ej_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -56,7 +55,7 @@ class _MainScreenState extends State<MainScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: ((context) => const EjScreen())));
+                          builder: ((context) => const JsScreen())));
                 },
                 borderRadius: BorderRadius.circular(70),
                 child: CircleAvatar(
