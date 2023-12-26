@@ -39,7 +39,7 @@ class _MainScreenState extends State<MainScreen> {
             borderRadius: BorderRadius.circular(70),
             child: const CircleAvatar(
               radius: 70,
-              backgroundImage: AssetImage('assets/1.jpeg'),
+              backgroundImage: AssetImage('assets/12.jpeg'),
             ),
           ),
           const SizedBox(

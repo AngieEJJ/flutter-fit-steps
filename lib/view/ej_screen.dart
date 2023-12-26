@@ -26,7 +26,7 @@ class EjScreen extends StatelessWidget {
       body: Column(
         children: [
           const ProfileWidget(
-            imgPath: 'assets/1.jpeg',
+            imgPath: 'assets/12.jpeg',
             currentWeight: '41kg',
             goalWeight: '44kg',
             status: '40% 달성중',
